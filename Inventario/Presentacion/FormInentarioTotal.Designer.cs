@@ -54,7 +54,7 @@ namespace Inventario.Presentacion
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(899, 400);
+            this.dataGridView1.Size = new System.Drawing.Size(1145, 400);
             this.dataGridView1.TabIndex = 0;
             // 
             // clave
@@ -103,7 +103,7 @@ namespace Inventario.Presentacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(899, 400);
+            this.ClientSize = new System.Drawing.Size(1145, 400);
             this.Controls.Add(this.dataGridView1);
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormInentarioTotal";

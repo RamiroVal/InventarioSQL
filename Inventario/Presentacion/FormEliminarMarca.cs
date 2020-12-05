@@ -12,9 +12,11 @@ namespace Inventario.Presentacion
 {
     public partial class FormEliminarMarca : Form
     {
-        public FormEliminarMarca()
+        public FormEliminarMarca() => InitializeComponent();
+
+        private void FormEliminarMarca_Load(object sender, EventArgs e)
         {
-            InitializeComponent();
+
         }
     }
 }

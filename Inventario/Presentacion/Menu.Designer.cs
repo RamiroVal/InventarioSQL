@@ -118,6 +118,7 @@ namespace Inventario.Presentacion
             this.consultaPorArtículosToolStripMenuItem.Name = "consultaPorArtículosToolStripMenuItem";
             this.consultaPorArtículosToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
             this.consultaPorArtículosToolStripMenuItem.Text = "Consulta Por Artículos";
+            this.consultaPorArtículosToolStripMenuItem.Click += new System.EventHandler(this.consultaPorArtículosToolStripMenuItem_Click);
             // 
             // consultaMarcasToolStripMenuItem
             // 

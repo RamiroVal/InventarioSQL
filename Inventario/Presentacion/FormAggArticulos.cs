@@ -26,10 +26,7 @@ namespace Inventario.Presentacion
         }
 
         #region Eventos Click
-        private void btnSalir_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        private void btnSalir_Click(object sender, EventArgs e) => this.Close();
         
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -63,6 +60,10 @@ namespace Inventario.Presentacion
             else
             {
                 errorProvider1.SetError(txtClave, "");
+            }
+            if (clave.Length != 4)
+            {
+                errorProvider1.SetError(txtClave, "Ingrese clave");
             }
         }
 
@@ -103,6 +104,17 @@ namespace Inventario.Presentacion
             else
             {
                 errorProvider1.SetError(txtExistencia, "");
+            }
+            if (chkExistencia.Checked)
+            {
+                if (existencia == "0")
+                {
+                    errorProvider1.SetError(txtExistencia, "Ingrese existencia o cambie estatus");
+                }
+                else
+                {
+                    errorProvider1.SetError(txtExistencia, "");
+                }
             }
         }
         #endregion
@@ -164,6 +176,8 @@ namespace Inventario.Presentacion
             }
         }
         #endregion
+
+        #region Utilidades
         private bool HayError()
         {
             if(errorProvider1.GetError(txtClave) != "" || errorProvider1.GetError(txtNombre) != "" || errorProvider1.GetError(txtPrecio) != "" || errorProvider1.GetError(txtExistencia) != "")
@@ -200,8 +214,9 @@ namespace Inventario.Presentacion
                 }
                 else
                 {
-                    MessageBox.Show("Clave repetida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Artículo repetido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     errorProvider1.SetError(txtClave, "Ingrese clave");
+                    errorProvider1.SetError(txtNombre, "Ingrese nombre");
                 }
             }
         }
@@ -214,6 +229,23 @@ namespace Inventario.Presentacion
             txtPrecio.Clear();
             chkExistencia.Checked = false;
             txtExistencia.Clear();
+        }
+        #endregion
+
+        private void chkExistencia_CheckedChanged(object sender, EventArgs e)
+        {
+            string c = txtExistencia.Text;
+            if (chkExistencia.Checked)
+            {
+                if (c == "0")
+                {
+                    errorProvider1.SetError(txtExistencia, "Ingrese existencia o cambie estatus");
+                }
+                else
+                {
+                    errorProvider1.SetError(txtExistencia, "");
+                }
+            }
         }
     }
 }

@@ -189,6 +189,7 @@ namespace Inventario.Presentacion
             this.chkExistencia.TabIndex = 4;
             this.chkExistencia.Text = "Siempre en existencia";
             this.chkExistencia.UseVisualStyleBackColor = true;
+            this.chkExistencia.CheckedChanged += new System.EventHandler(this.chkExistencia_CheckedChanged);
             // 
             // FormAggArticulos
             // 

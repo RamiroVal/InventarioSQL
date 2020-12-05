@@ -75,7 +75,22 @@ namespace Inventario.Presentacion
             }
             else
             {
-                MessageBox.Show("No se han añadido artículos.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No se han añadido artículos.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void consultaPorArtículosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EncargaArticulos a = new EncargaArticulos();
+            bool hay = a.HayArticulos();
+            if (hay)
+            {
+                FormConsultaPorArticulo i = new FormConsultaPorArticulo();
+                i.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se han añadido artículos.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

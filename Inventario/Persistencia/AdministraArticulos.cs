@@ -62,7 +62,7 @@ namespace Inventario.Persistencia
         /// <param name="cadena">Cadena de conexión.</param>
         /// <param name="clave">Clave del artículo.</param>
         /// <returns>0 = No esta. 1 = Esta. 2 = Error de conexión. 3 = Error de consulta.</returns>
-        public static int EstaArticulo(string cadena, string clave)
+        public static int EstaArticulo(string cadena, string clave, string nombre)
         {
             SqlConnection connection = UsoBD.ConectaBD(cadena);
             if (connection == null)
@@ -72,25 +72,27 @@ namespace Inventario.Persistencia
             }
             string proc = "EstaArticulo";
             SqlCommand command = new SqlCommand(proc, connection);
-            SqlDataReader reader = null;
             command.Parameters.AddWithValue("@idArticulo", clave);
+            command.Parameters.AddWithValue("@descArticulo", nombre);
             command.CommandType = CommandType.StoredProcedure;
+            int c = 0;
             try
             {
-                reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    proc = reader.GetValue(0).ToString();
-                }
+                c = (int)command.ExecuteScalar();
             }catch(SqlException e)
             {
                 errores = e;
                 connection.Close();
                 return 3;
             }
-            return (proc == "EstaArticulo") ? 0 : 1;
+            return c;
         }
 
+        /// <summary>
+        /// Método para consultar todos los datos de los artículos.
+        /// </summary>
+        /// <param name="cadenaC">Cadena de conexión.</param>
+        /// <returns>Arreglo de tipo Articulo con los datos.</returns>
         public static Articulo[] Articulos(string cadenaC)
         {
             SqlConnection connection = UsoBD.ConectaBD(cadenaC);
@@ -158,5 +160,87 @@ namespace Inventario.Persistencia
             connection.Close();
             return c;
         }
+
+        /// <summary>
+        /// Método para consultar las claves y descripción de los artículos.
+        /// </summary>
+        /// <param name="cadenaC">Cadena de conexión.</param>
+        /// <returns>Dictionary con los datos Key = Descripcion.</returns>
+        public static Dictionary<string, string> DescripcionClavesArticulos(string cadenaC)
+        {
+            SqlConnection connection = UsoBD.ConectaBD(cadenaC);
+            if (connection == null)
+            {
+                errores = UsoBD.ESalida;
+                return null;
+            }
+            string proc = "ArticulosClaves";
+            SqlCommand command = new SqlCommand(proc, connection);
+            SqlDataReader reader = null;
+            Dictionary<string, string> articulos = new Dictionary<string, string>();
+            command.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string clave = reader.GetValue(0).ToString();
+                    string desc = reader.GetValue(1).ToString();
+                    articulos.Add(desc, clave);
+                }
+            }
+            catch (SqlException e)
+            {
+                errores = e;
+                connection.Close();
+                return null;
+            }
+            connection.Close();
+            return articulos;
+        }
+
+        /// <summary>
+        /// Método que consulta los atributos de un artículo por su clave.
+        /// </summary>
+        /// <param name="cadenaC">Cadena de conexión.</param>
+        /// <param name="clave">Clave del artículo.</param>
+        /// <returns>Articulo.</returns>
+        public static Articulo DatosArticulo(string cadenaC, string clave)
+        {
+            SqlConnection connection = UsoBD.ConectaBD(cadenaC);
+            if (connection == null)
+            {
+                errores = UsoBD.ESalida;
+                return null;
+            }
+            string proc = "ConsultaArticulo";
+            SqlCommand command = new SqlCommand(proc, connection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idArticulo", clave);
+            SqlDataReader reader = null;
+            Articulo articulo = new Articulo();
+            try
+            {
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    articulo.Clave = reader.GetValue(0).ToString();
+                    articulo.Marca = reader.GetValue(1).ToString();
+                    articulo.Descripcion = reader.GetValue(2).ToString();
+                    articulo.Existencia = Convert.ToInt32(reader.GetValue(3));
+                    articulo.SiempreExistencia = Convert.ToInt32(reader.GetValue(4));
+                    articulo.Precio = Convert.ToDouble(reader.GetValue(5));
+                }
+            }catch(SqlException e)
+            {
+                errores = e;
+                connection.Close();
+                return null;
+            }
+            connection.Close();
+            return articulo;
+        }
+
+        public SqlException Errores => errores;
     }
 }

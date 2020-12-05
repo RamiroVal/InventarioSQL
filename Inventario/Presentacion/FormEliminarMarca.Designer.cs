@@ -46,45 +46,50 @@ namespace Inventario.Presentacion
             // lblMarca
             // 
             this.lblMarca.AutoSize = true;
-            this.lblMarca.Location = new System.Drawing.Point(22, 24);
+            this.lblMarca.Location = new System.Drawing.Point(29, 30);
+            this.lblMarca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(104, 13);
+            this.lblMarca.Size = new System.Drawing.Size(135, 17);
             this.lblMarca.TabIndex = 0;
             this.lblMarca.Text = "Seleccione la Marca";
             // 
             // lblClave
             // 
             this.lblClave.AutoSize = true;
-            this.lblClave.Location = new System.Drawing.Point(22, 61);
+            this.lblClave.Location = new System.Drawing.Point(29, 75);
+            this.lblClave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClave.Name = "lblClave";
-            this.lblClave.Size = new System.Drawing.Size(48, 13);
+            this.lblClave.Size = new System.Drawing.Size(60, 17);
             this.lblClave.TabIndex = 1;
             this.lblClave.Text = "Clave ID";
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(22, 96);
+            this.lblNombre.Location = new System.Drawing.Point(29, 118);
+            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.Size = new System.Drawing.Size(58, 17);
             this.lblNombre.TabIndex = 2;
             this.lblNombre.Text = "Nombre";
             // 
             // lblDatos
             // 
             this.lblDatos.AutoSize = true;
-            this.lblDatos.Location = new System.Drawing.Point(22, 132);
+            this.lblDatos.Location = new System.Drawing.Point(29, 162);
+            this.lblDatos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDatos.Name = "lblDatos";
-            this.lblDatos.Size = new System.Drawing.Size(86, 13);
+            this.lblDatos.Size = new System.Drawing.Size(115, 17);
             this.lblDatos.TabIndex = 3;
             this.lblDatos.Text = "Datos Generales";
             // 
             // lblArticulos
             // 
             this.lblArticulos.AutoSize = true;
-            this.lblArticulos.Location = new System.Drawing.Point(22, 169);
+            this.lblArticulos.Location = new System.Drawing.Point(29, 208);
+            this.lblArticulos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArticulos.Name = "lblArticulos";
-            this.lblArticulos.Size = new System.Drawing.Size(49, 13);
+            this.lblArticulos.Size = new System.Drawing.Size(62, 17);
             this.lblArticulos.TabIndex = 4;
             this.lblArticulos.Text = "Artículos";
             // 
@@ -92,67 +97,78 @@ namespace Inventario.Presentacion
             // 
             this.cmbMarcas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMarcas.FormattingEnabled = true;
-            this.cmbMarcas.Location = new System.Drawing.Point(171, 21);
+            this.cmbMarcas.Location = new System.Drawing.Point(228, 26);
+            this.cmbMarcas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cmbMarcas.Name = "cmbMarcas";
-            this.cmbMarcas.Size = new System.Drawing.Size(175, 21);
-            this.cmbMarcas.TabIndex = 5;
+            this.cmbMarcas.Size = new System.Drawing.Size(232, 24);
+            this.cmbMarcas.TabIndex = 1;
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(171, 58);
+            this.txtClave.Location = new System.Drawing.Point(228, 71);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtClave.Name = "txtClave";
             this.txtClave.ReadOnly = true;
-            this.txtClave.Size = new System.Drawing.Size(175, 20);
+            this.txtClave.Size = new System.Drawing.Size(232, 22);
             this.txtClave.TabIndex = 6;
+            this.txtClave.TabStop = false;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(171, 93);
+            this.txtNombre.Location = new System.Drawing.Point(228, 114);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.ReadOnly = true;
-            this.txtNombre.Size = new System.Drawing.Size(175, 20);
+            this.txtNombre.Size = new System.Drawing.Size(232, 22);
             this.txtNombre.TabIndex = 7;
+            this.txtNombre.TabStop = false;
             // 
             // txtDatos
             // 
-            this.txtDatos.Location = new System.Drawing.Point(171, 129);
+            this.txtDatos.Location = new System.Drawing.Point(228, 159);
+            this.txtDatos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtDatos.Name = "txtDatos";
             this.txtDatos.ReadOnly = true;
-            this.txtDatos.Size = new System.Drawing.Size(175, 20);
+            this.txtDatos.Size = new System.Drawing.Size(232, 22);
             this.txtDatos.TabIndex = 8;
+            this.txtDatos.TabStop = false;
             // 
             // txtArticulos
             // 
-            this.txtArticulos.Location = new System.Drawing.Point(171, 166);
+            this.txtArticulos.Location = new System.Drawing.Point(228, 204);
+            this.txtArticulos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtArticulos.Name = "txtArticulos";
             this.txtArticulos.ReadOnly = true;
-            this.txtArticulos.Size = new System.Drawing.Size(175, 20);
+            this.txtArticulos.Size = new System.Drawing.Size(232, 22);
             this.txtArticulos.TabIndex = 9;
+            this.txtArticulos.TabStop = false;
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(25, 209);
+            this.btnGuardar.Location = new System.Drawing.Point(33, 257);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(134, 34);
-            this.btnGuardar.TabIndex = 10;
+            this.btnGuardar.Size = new System.Drawing.Size(179, 42);
+            this.btnGuardar.TabIndex = 2;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(212, 209);
+            this.btnSalir.Location = new System.Drawing.Point(283, 257);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(134, 34);
-            this.btnSalir.TabIndex = 11;
+            this.btnSalir.Size = new System.Drawing.Size(179, 42);
+            this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
             // FormEliminarMarca
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(369, 253);
+            this.ClientSize = new System.Drawing.Size(489, 302);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtArticulos);
@@ -165,12 +181,14 @@ namespace Inventario.Presentacion
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblClave);
             this.Controls.Add(this.lblMarca);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(385, 292);
-            this.MinimumSize = new System.Drawing.Size(385, 292);
+            this.MaximumSize = new System.Drawing.Size(507, 349);
+            this.MinimumSize = new System.Drawing.Size(507, 349);
             this.Name = "FormEliminarMarca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Eliminar Marca";
+            this.Load += new System.EventHandler(this.FormEliminarMarca_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

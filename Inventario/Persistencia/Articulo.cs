@@ -15,6 +15,7 @@ namespace Inventario.Persistencia
         private int sExistencia;
         private double precio;
 
+        #region Constructores
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -35,34 +36,65 @@ namespace Inventario.Persistencia
         }
 
         /// <summary>
+        /// Constructor vacío.
+        /// </summary>
+        public Articulo() { }
+        #endregion
+
+        #region Propiedades
+        /// <summary>
         /// Propiedad que obtiene clave.
         /// </summary>
-        public string Clave => clave;
+        public string Clave
+        {
+            get => clave;
+            set => clave = value;
+        }
 
         /// <summary>
         /// Propiedad que obtiene marca.
         /// </summary>
-        public string Marca => marca;
+        public string Marca
+        {
+            get => marca;
+            set => marca = value;
+        }
 
         /// <summary>
         /// Propiedad que obtiene descripción.
         /// </summary>
-        public string Descripcion => descripcion;
+        public string Descripcion
+        {
+            get => descripcion;
+            set => descripcion = value;
+        }
 
         /// <summary>
         /// Propiedad que obtiene existencia.
         /// </summary>
-        public int Existencia => existencia;
+        public int Existencia
+        {
+            get => existencia;
+            set => existencia = value;
+        }
 
         /// <summary>
         /// Propiedad que obtiene SiempreExistencia.
         /// </summary>
-        public int SiempreExistencia => sExistencia;
+        public int SiempreExistencia
+        {
+            get => sExistencia;
+            set => sExistencia = value;
+        }
 
         /// <summary>
         /// Propiedad que obtiene el precio.
         /// </summary>
-        public double Precio => precio;
-
+        public double Precio
+        {
+            get => precio;
+            set => precio = value;
+        }
+        #endregion
     }
 }
