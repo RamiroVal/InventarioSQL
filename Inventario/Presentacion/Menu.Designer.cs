@@ -111,6 +111,7 @@ namespace Inventario.Presentacion
             this.inventarioTotalToolStripMenuItem.Name = "inventarioTotalToolStripMenuItem";
             this.inventarioTotalToolStripMenuItem.Size = new System.Drawing.Size(236, 26);
             this.inventarioTotalToolStripMenuItem.Text = "Inventario Total";
+            this.inventarioTotalToolStripMenuItem.Click += new System.EventHandler(this.inventarioTotalToolStripMenuItem_Click);
             // 
             // consultaPorArtículosToolStripMenuItem
             // 
@@ -137,13 +138,13 @@ namespace Inventario.Presentacion
             // cambiarExistenciaToolStripMenuItem
             // 
             this.cambiarExistenciaToolStripMenuItem.Name = "cambiarExistenciaToolStripMenuItem";
-            this.cambiarExistenciaToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
+            this.cambiarExistenciaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.cambiarExistenciaToolStripMenuItem.Text = "Cambiar Existencia";
             // 
             // eliminarMarcaToolStripMenuItem
             // 
             this.eliminarMarcaToolStripMenuItem.Name = "eliminarMarcaToolStripMenuItem";
-            this.eliminarMarcaToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
+            this.eliminarMarcaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.eliminarMarcaToolStripMenuItem.Text = "Eliminar Marca";
             // 
             // Menu
@@ -154,7 +155,7 @@ namespace Inventario.Presentacion
             this.ClientSize = new System.Drawing.Size(745, 234);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(763, 281);
             this.MinimumSize = new System.Drawing.Size(763, 281);

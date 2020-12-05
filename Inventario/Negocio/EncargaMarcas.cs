@@ -23,7 +23,7 @@ namespace Inventario.Negocio
         /// <returns>True = hay marcas.</returns>
         public bool HayMarcas()
         {
-            int total = AdministraMarcas.TotalMarcas(cadenaC);
+            int total = AdministraMarcas.HayMarcas(cadenaC);
             return (total > 0) ? true : false;
         }
 
@@ -31,7 +31,7 @@ namespace Inventario.Negocio
         /// Método para enviar a la capa de presentación las marcas consultadas en la capa de persistencia.
         /// </summary>
         /// <returns>Matriz de string con los datos de las marcas.</returns>
-        public String[,] FormatoMarcas()
+        public string[,] FormatoMarcas()
         {
             Marca[] marcas = AdministraMarcas.Marcas(cadenaC);
             if (marcas == null)

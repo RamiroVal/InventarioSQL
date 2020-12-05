@@ -28,5 +28,35 @@ namespace Inventario.Negocio
             }
             return false;
         }
+
+        /// <summary>
+        /// Método que determina si hay o no artículos.
+        /// </summary>
+        /// <returns>True = hay artículos.</returns>
+        public bool HayArticulos()
+        {
+            int a = AdministraArticulos.HayArticulos(cadenaC);
+            return (a == 1) ? true : false;
+        }
+
+        public string [,] FormatoArticulos()
+        {
+            Articulo[] articulos = AdministraArticulos.Articulos(cadenaC);
+            if (articulos == null)
+            {
+                return null;
+            }
+            string[,] datos = new string[articulos.Length, 6];
+            for(int i = 0; i < articulos.Length; i++)
+            {
+                datos[i, 0] = articulos[i].Clave;
+                datos[i, 1] = articulos[i].Marca;
+                datos[i, 2] = articulos[i].Descripcion;
+                datos[i, 3] = articulos[i].Existencia.ToString();
+                datos[i, 4] = (articulos[i].SiempreExistencia == 1) ? "Verdadero" : "Falso";
+                datos[i, 5] = articulos[i].Precio.ToString("C2");
+            }
+            return datos;
+        }
     }
 }

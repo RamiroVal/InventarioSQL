@@ -63,5 +63,20 @@ namespace Inventario.Presentacion
                 MessageBox.Show("No se han agregado marcas, agregue una primero.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void inventarioTotalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EncargaArticulos a = new EncargaArticulos();
+            bool hay = a.HayArticulos();
+            if (hay)
+            {
+                FormInentarioTotal i = new FormInentarioTotal();
+                i.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se han añadido artículos.", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

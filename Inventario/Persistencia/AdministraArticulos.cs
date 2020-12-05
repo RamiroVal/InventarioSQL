@@ -90,5 +90,73 @@ namespace Inventario.Persistencia
             }
             return (proc == "EstaArticulo") ? 0 : 1;
         }
+
+        public static Articulo[] Articulos(string cadenaC)
+        {
+            SqlConnection connection = UsoBD.ConectaBD(cadenaC);
+            if (connection == null)
+            {
+                errores = UsoBD.ESalida;
+                return null;
+            }
+            string proc = "ConsultaArticulos";
+            SqlCommand command = new SqlCommand(proc, connection);
+            SqlDataReader reader = null;
+            List<Articulo> articulos = new List<Articulo>();
+            command.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string clave = reader.GetValue(0).ToString();
+                    string marca = reader.GetValue(1).ToString();
+                    string descripcion = reader.GetValue(2).ToString();
+                    int existencia = Convert.ToInt32(reader.GetValue(3));
+                    int sExistencia = Convert.ToInt32(reader.GetValue(4));
+                    double precio = Convert.ToDouble(reader.GetValue(5));
+                    articulos.Add(new Articulo(clave, marca, descripcion, existencia, sExistencia, precio));
+                }
+            }catch(SqlException e)
+            {
+                errores = e;
+                return null;
+            }
+            connection.Close();
+            Articulo[] a = new Articulo[articulos.Count];
+            articulos.CopyTo(a);
+            return a;
+        }
+
+        /// <summary>
+        /// Método para consultar a la BD y determinar si hay artículos agregados.
+        /// </summary>
+        /// <param name="cadenaC">Cadena de conexión.</param>
+        /// <returns>0 = No hay marcas. 1 = Hay marcas. -1 = Error de conexión.
+        /// -2 = Error en consulta.</returns>
+        public static int HayArticulos(string cadenaC)
+        {
+            SqlConnection connection = UsoBD.ConectaBD(cadenaC);
+            if (connection == null)
+            {
+                errores = UsoBD.ESalida;
+                return -1;
+            }
+            string proc = "HayArticulos";
+            SqlCommand command = new SqlCommand(proc, connection);
+            command.CommandType = CommandType.StoredProcedure;
+            int c = 0;
+            try
+            {
+                c = (int)command.ExecuteScalar();
+            }catch(SqlException e)
+            {
+                errores = e;
+                connection.Close();
+                return -2;
+            }
+            connection.Close();
+            return c;
+        }
     }
 }

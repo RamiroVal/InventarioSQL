@@ -70,18 +70,18 @@ namespace Inventario.Persistencia
             try
             {
                 reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string clave = reader.GetValue(0).ToString();
+                    string nombre = reader.GetValue(1).ToString();
+                    string datos = reader.GetValue(2).ToString();
+                    marcas.Add(new Marca(clave, nombre, datos));
+                }
             }catch(SqlException e)
             {
                 errores = e;
                 connection.Close();
                 return null;
-            }
-            while (reader.Read())
-            {
-                string clave = reader.GetValue(0).ToString();
-                string nombre = reader.GetValue(1).ToString();
-                string datos = reader.GetValue(2).ToString();
-                marcas.Add(new Marca(clave, nombre, datos));
             }
             Marca[] m = new Marca[marcas.Count];
             marcas.CopyTo(m);
@@ -128,13 +128,13 @@ namespace Inventario.Persistencia
         }
 
         /// <summary>
-        /// Método que consulta a la BD para determinar cuántas marcas han sido dadas de alta.
+        /// Método que consulta a la BD para determinar si hay marcas agregadas.
         /// </summary>
         /// <param name="cadenaC">Cadena de conexión.</param>
-        /// <returns>Total de marcas.
+        /// <returns>0 = No hay marcas. 1 = Hay marcas.
         /// -1.- Error de conexión.
         /// -2.- Error en consulta.</returns>
-        public static int TotalMarcas(string cadenaC)
+        public static int HayMarcas(string cadenaC)
         {
             SqlConnection connection = UsoBD.ConectaBD(cadenaC);
             if (connection == null)
@@ -197,7 +197,6 @@ namespace Inventario.Persistencia
             connection.Close();
             return c;
         }
-
         public SqlException Errores => errores;
     }
 }
