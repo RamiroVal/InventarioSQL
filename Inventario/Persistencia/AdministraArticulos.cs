@@ -1,0 +1,94 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
+using LibreriaBD;
+
+namespace Inventario.Persistencia
+{
+    public class AdministraArticulos
+    {
+        private static SqlException errores;
+
+        /// <summary>
+        /// Método para la inserción de Artículos.
+        /// </summary>
+        /// <param name="cadenaC">Cadena de conexión.</param>
+        /// <param name="clave">Clave del artículo.</param>
+        /// <param name="marca">Marca del artículo.</param>
+        /// <param name="descripcion">Descripción del artículo.</param>
+        /// <param name="existencia">Existencia del artículo.</param>
+        /// <param name="sExistencia">siempre = 1, no = 0</param>
+        /// <param name="precio">Precio del artículo.</param>
+        /// <returns>0 = Inserción exitosa.
+        /// 1 = Error de conexión.
+        /// 2 = Error en la inserción de datos.</returns>
+        public static int AgregaArticulo(string cadenaC, string clave, string marca, string descripcion, int existencia, int sExistencia, double precio)
+        {
+            SqlConnection connection = UsoBD.ConectaBD(cadenaC);
+            if (connection == null)
+            {
+                errores = UsoBD.ESalida;
+                return 1;
+            }
+            string proc = "AñadirArticulo";
+            SqlCommand command = new SqlCommand(proc, connection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idArticulo", clave);
+            command.Parameters.AddWithValue("@idMarca", marca);
+            command.Parameters.AddWithValue("@descMarca", descripcion);
+            command.Parameters.AddWithValue("@existMarca", existencia);
+            command.Parameters.AddWithValue("@sExistencia", sExistencia);
+            command.Parameters.AddWithValue("@precioMarca", precio);
+            try
+            {
+                command.ExecuteNonQuery();
+            }catch(SqlException e)
+            {
+                errores = e;
+                connection.Close();
+                return 2;
+            }
+            connection.Close();
+            return 0;
+        }
+
+        /// <summary>
+        /// Método que hace consulta para ver si un articulo ha sido dado de alta.
+        /// </summary>
+        /// <param name="cadena">Cadena de conexión.</param>
+        /// <param name="clave">Clave del artículo.</param>
+        /// <returns>0 = No esta. 1 = Esta. 2 = Error de conexión. 3 = Error de consulta.</returns>
+        public static int EstaArticulo(string cadena, string clave)
+        {
+            SqlConnection connection = UsoBD.ConectaBD(cadena);
+            if (connection == null)
+            {
+                errores = UsoBD.ESalida;
+                return 2;
+            }
+            string proc = "EstaArticulo";
+            SqlCommand command = new SqlCommand(proc, connection);
+            SqlDataReader reader = null;
+            command.Parameters.AddWithValue("@idArticulo", clave);
+            command.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    proc = reader.GetValue(0).ToString();
+                }
+            }catch(SqlException e)
+            {
+                errores = e;
+                connection.Close();
+                return 3;
+            }
+            return (proc == "EstaArticulo") ? 0 : 1;
+        }
+    }
+}

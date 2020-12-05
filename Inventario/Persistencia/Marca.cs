@@ -8,10 +8,13 @@ namespace Inventario.Persistencia
 {
     public class Marca
     {
+        #region Atributos
         private string clave;
         private string nombre;
         private string datos;
+        #endregion
 
+        #region Constructores
         /// <summary>
         /// Constructor que recibe clave, nombre y datos de la marca.
         /// </summary>
@@ -35,6 +38,7 @@ namespace Inventario.Persistencia
             this.clave = clave;
             this.nombre = nombre;
         }
+        #endregion
 
         /// <summary>
         /// ToString sobreescrito.
@@ -42,6 +46,7 @@ namespace Inventario.Persistencia
         /// <returns>Nombre de la Marca.</returns>
         public override string ToString() => nombre;
 
+        #region Propiedades
         /// <summary>
         /// Propiedad que devuelve clave.
         /// </summary>
@@ -56,5 +61,6 @@ namespace Inventario.Persistencia
         /// Propiedad que devuelve datos.
         /// </summary>
         public string Datos => datos;
+        #endregion
     }
 }

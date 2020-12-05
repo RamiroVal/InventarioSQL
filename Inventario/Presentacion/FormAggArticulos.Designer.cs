@@ -43,118 +43,160 @@ namespace Inventario.Presentacion
             this.txtExistencia = new System.Windows.Forms.TextBox();
             this.cmbMarcas = new System.Windows.Forms.ComboBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.chkExistencia = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClave
             // 
             this.lblClave.AutoSize = true;
-            this.lblClave.Location = new System.Drawing.Point(38, 25);
+            this.lblClave.Location = new System.Drawing.Point(51, 31);
+            this.lblClave.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblClave.Name = "lblClave";
-            this.lblClave.Size = new System.Drawing.Size(34, 13);
+            this.lblClave.Size = new System.Drawing.Size(43, 17);
             this.lblClave.TabIndex = 0;
             this.lblClave.Text = "Clave";
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(38, 59);
+            this.lblNombre.Location = new System.Drawing.Point(51, 114);
+            this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(44, 13);
+            this.lblNombre.Size = new System.Drawing.Size(82, 17);
             this.lblNombre.TabIndex = 1;
-            this.lblNombre.Text = "Nombre";
+            this.lblNombre.Text = "Descripción";
             // 
             // lblExistencia
             // 
             this.lblExistencia.AutoSize = true;
-            this.lblExistencia.Location = new System.Drawing.Point(38, 97);
+            this.lblExistencia.Location = new System.Drawing.Point(51, 222);
+            this.lblExistencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblExistencia.Name = "lblExistencia";
-            this.lblExistencia.Size = new System.Drawing.Size(55, 13);
+            this.lblExistencia.Size = new System.Drawing.Size(71, 17);
             this.lblExistencia.TabIndex = 2;
             this.lblExistencia.Text = "Existencia";
             // 
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(38, 135);
+            this.lblPrecio.Location = new System.Drawing.Point(51, 152);
+            this.lblPrecio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(37, 13);
+            this.lblPrecio.Size = new System.Drawing.Size(48, 17);
             this.lblPrecio.TabIndex = 3;
             this.lblPrecio.Text = "Precio";
             // 
             // lblSeleccion
             // 
             this.lblSeleccion.AutoSize = true;
-            this.lblSeleccion.Location = new System.Drawing.Point(38, 175);
+            this.lblSeleccion.Location = new System.Drawing.Point(51, 70);
+            this.lblSeleccion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSeleccion.Name = "lblSeleccion";
-            this.lblSeleccion.Size = new System.Drawing.Size(96, 13);
+            this.lblSeleccion.Size = new System.Drawing.Size(125, 17);
             this.lblSeleccion.TabIndex = 4;
             this.lblSeleccion.Text = "Seleccionar Marca";
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(41, 237);
+            this.btnGuardar.Location = new System.Drawing.Point(55, 258);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(122, 45);
-            this.btnGuardar.TabIndex = 5;
+            this.btnGuardar.Size = new System.Drawing.Size(163, 55);
+            this.btnGuardar.TabIndex = 6;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(206, 237);
+            this.btnSalir.Location = new System.Drawing.Point(275, 258);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(122, 45);
-            this.btnSalir.TabIndex = 6;
+            this.btnSalir.Size = new System.Drawing.Size(163, 55);
+            this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(175, 22);
+            this.txtClave.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtClave.Location = new System.Drawing.Point(233, 27);
+            this.txtClave.Margin = new System.Windows.Forms.Padding(4);
+            this.txtClave.MaxLength = 4;
             this.txtClave.Name = "txtClave";
-            this.txtClave.Size = new System.Drawing.Size(153, 20);
-            this.txtClave.TabIndex = 7;
+            this.txtClave.Size = new System.Drawing.Size(203, 22);
+            this.txtClave.TabIndex = 0;
+            this.txtClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClave_KeyPress);
+            this.txtClave.Validated += new System.EventHandler(this.txtClave_Validated);
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(175, 56);
+            this.txtNombre.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNombre.Location = new System.Drawing.Point(233, 110);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
+            this.txtNombre.MaxLength = 30;
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(153, 20);
-            this.txtNombre.TabIndex = 8;
+            this.txtNombre.Size = new System.Drawing.Size(203, 22);
+            this.txtNombre.TabIndex = 2;
+            this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
+            this.txtNombre.Validated += new System.EventHandler(this.txtNombre_Validated);
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Location = new System.Drawing.Point(175, 132);
+            this.txtPrecio.Location = new System.Drawing.Point(233, 148);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPrecio.MaxLength = 9;
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(153, 20);
-            this.txtPrecio.TabIndex = 9;
+            this.txtPrecio.Size = new System.Drawing.Size(203, 22);
+            this.txtPrecio.TabIndex = 3;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
+            this.txtPrecio.Validated += new System.EventHandler(this.txtPrecio_Validated);
             // 
             // txtExistencia
             // 
-            this.txtExistencia.Location = new System.Drawing.Point(175, 94);
+            this.txtExistencia.Location = new System.Drawing.Point(233, 219);
+            this.txtExistencia.Margin = new System.Windows.Forms.Padding(4);
+            this.txtExistencia.MaxLength = 4;
             this.txtExistencia.Name = "txtExistencia";
-            this.txtExistencia.Size = new System.Drawing.Size(153, 20);
-            this.txtExistencia.TabIndex = 10;
+            this.txtExistencia.Size = new System.Drawing.Size(203, 22);
+            this.txtExistencia.TabIndex = 5;
+            this.txtExistencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtExistencia_KeyPress);
+            this.txtExistencia.Validated += new System.EventHandler(this.txtExistencia_Validated);
             // 
             // cmbMarcas
             // 
+            this.cmbMarcas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMarcas.FormattingEnabled = true;
-            this.cmbMarcas.Location = new System.Drawing.Point(175, 172);
+            this.cmbMarcas.Location = new System.Drawing.Point(233, 67);
+            this.cmbMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMarcas.Name = "cmbMarcas";
-            this.cmbMarcas.Size = new System.Drawing.Size(153, 21);
-            this.cmbMarcas.TabIndex = 11;
+            this.cmbMarcas.Size = new System.Drawing.Size(203, 24);
+            this.cmbMarcas.TabIndex = 1;
             // 
             // errorProvider1
             // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
+            // 
+            // chkExistencia
+            // 
+            this.chkExistencia.AutoSize = true;
+            this.chkExistencia.Location = new System.Drawing.Point(148, 184);
+            this.chkExistencia.Name = "chkExistencia";
+            this.chkExistencia.Size = new System.Drawing.Size(168, 21);
+            this.chkExistencia.TabIndex = 4;
+            this.chkExistencia.Text = "Siempre en existencia";
+            this.chkExistencia.UseVisualStyleBackColor = true;
             // 
             // FormAggArticulos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(377, 307);
+            this.ClientSize = new System.Drawing.Size(491, 337);
+            this.Controls.Add(this.chkExistencia);
             this.Controls.Add(this.cmbMarcas);
             this.Controls.Add(this.txtExistencia);
             this.Controls.Add(this.txtPrecio);
@@ -167,12 +209,13 @@ namespace Inventario.Presentacion
             this.Controls.Add(this.lblExistencia);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.lblClave);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(393, 346);
-            this.MinimumSize = new System.Drawing.Size(393, 346);
+            this.MaximumSize = new System.Drawing.Size(509, 384);
+            this.MinimumSize = new System.Drawing.Size(509, 384);
             this.Name = "FormAggArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Captura de Artículos";
+            this.Text = "Agregar Artículo";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -194,5 +237,6 @@ namespace Inventario.Presentacion
         private System.Windows.Forms.TextBox txtExistencia;
         private System.Windows.Forms.ComboBox cmbMarcas;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.CheckBox chkExistencia;
     }
 }

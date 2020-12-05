@@ -52,8 +52,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Negocio\EncargaArticulos.cs" />
     <Compile Include="Negocio\EncargaMarcas.cs" />
+    <Compile Include="Persistencia\AdministraArticulos.cs" />
     <Compile Include="Persistencia\AdministraMarcas.cs" />
+    <Compile Include="Persistencia\Articulo.cs" />
     <Compile Include="Persistencia\Marca.cs" />
     <Compile Include="Presentacion\FormAggArticulos.cs">
       <SubType>Form</SubType>

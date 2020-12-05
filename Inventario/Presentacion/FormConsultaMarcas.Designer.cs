@@ -45,37 +45,43 @@ namespace Inventario.Presentacion
             this.datos});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(690, 305);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(920, 375);
             this.dataGridView1.TabIndex = 0;
             // 
             // clave
             // 
             this.clave.HeaderText = "Clave";
+            this.clave.MinimumWidth = 6;
             this.clave.Name = "clave";
             this.clave.Width = 80;
             // 
             // nombre
             // 
             this.nombre.HeaderText = "Nombre";
+            this.nombre.MinimumWidth = 6;
             this.nombre.Name = "nombre";
             this.nombre.Width = 150;
             // 
             // datos
             // 
             this.datos.HeaderText = "Datos Proveedor";
+            this.datos.MinimumWidth = 6;
             this.datos.Name = "datos";
             this.datos.Width = 300;
             // 
             // FormConsultaMarcas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 305);
+            this.ClientSize = new System.Drawing.Size(920, 375);
             this.Controls.Add(this.dataGridView1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FormConsultaMarcas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormConsultaMarcas";
+            this.Text = "Consulta de Marcas";
             this.Load += new System.EventHandler(this.FormConsultaMarcas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
