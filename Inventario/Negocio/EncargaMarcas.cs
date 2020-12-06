@@ -86,6 +86,43 @@ namespace Inventario.Negocio
             return false;
         }
 
+        public bool EliminarMarca(string clave, int nArticulos)
+        {
+            if (nArticulos != 0)
+            {
+                return false;
+            }
+            int conf = AdministraMarcas.EliminarMarca(cadenaC, clave);
+            if (conf == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Método que obtiene el dato del proveedor de una marca.
+        /// </summary>
+        /// <param name="clave">Clave de la marca.</param>
+        /// <returns>Datos del proveedor.</returns>
+        public string ProveedorMarca(string clave)
+        {
+            string datos = AdministraMarcas.DatosProveedorMarca(cadenaC, clave);
+            if (datos == null)
+            {
+                return null;
+            }
+            return datos;
+        }
+
+        /// <summary>
+        /// Devuelve la clave por su nombre.
+        /// </summary>
+        /// <param name="nombre">Nombre de la marca.</param>
+        /// <returns>Clave de la marca.</returns>
         public string ClaveMarca(string nombre) => marcas[nombre];
     }
 }

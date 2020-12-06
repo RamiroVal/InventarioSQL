@@ -128,6 +128,43 @@ namespace Inventario.Persistencia
         }
 
         /// <summary>
+        /// Método para consultar los datos del proveedor de una marca.
+        /// </summary>
+        /// <param name="cadenaC">Cadena de conexión.</param>
+        /// <param name="clave">Clave de la marca.</param>
+        /// <returns>Datos del proveedor.</returns>
+        public static string DatosProveedorMarca(string cadenaC, string clave)
+        {
+            SqlConnection connection = UsoBD.ConectaBD(cadenaC);
+            if (connection == null)
+            {
+                errores = UsoBD.ESalida;
+                return null;
+            }
+            string proc = "DatosProveedorMarca";
+            SqlCommand command = new SqlCommand(proc, connection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idMarca", clave);
+            SqlDataReader reader = null;
+            string dato = "";
+            try
+            {
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    dato = reader.GetValue(0).ToString();
+                }
+            }catch(SqlException e)
+            {
+                errores = e;
+                connection.Close();
+                return null;
+            }
+            connection.Close();
+            return dato;
+        }
+
+        /// <summary>
         /// Método que consulta a la BD para determinar si hay marcas agregadas.
         /// </summary>
         /// <param name="cadenaC">Cadena de conexión.</param>
@@ -158,6 +195,37 @@ namespace Inventario.Persistencia
             }
             connection.Close();
             return cuenta;
+        }
+
+        /// <summary>
+        /// Método que elimina una marca determinada.
+        /// </summary>
+        /// <param name="cadenaC">Cadena de conexión.</param>
+        /// <param name="clave">Clave de la marca.</param>
+        /// <returns>0 = se eliminó correctamente. 1 = error de conexión. 2 = error en ejecución de instrucción.</returns>
+        public static int EliminarMarca(string cadenaC, string clave)
+        {
+            SqlConnection connection = UsoBD.ConectaBD(cadenaC);
+            if (connection == null)
+            {
+                errores = UsoBD.ESalida;
+                return 1;
+            }
+            string proc = "EliminaMarca";
+            SqlCommand command = new SqlCommand(proc, connection);
+            command.CommandType = CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@idMarca", clave);
+            try
+            {
+                command.ExecuteNonQuery();
+            }catch(SqlException e)
+            {
+                errores = e;
+                connection.Close();
+                return 2;
+            }
+            connection.Close();
+            return 0;
         }
 
         /// <summary>

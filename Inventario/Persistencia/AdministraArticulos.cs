@@ -241,6 +241,45 @@ namespace Inventario.Persistencia
             return articulo;
         }
 
+        /// <summary>
+        /// Método que devuelve la cantidad de artículos que posee una marca determinada.
+        /// </summary>
+        /// <param name="cadenaC">Cadena de conexión.</param>
+        /// <param name="marca">Clave de la marca.</param>
+        /// <returns>Cantidad de artículos. -1 = error de conexión. -2 error en consulta.</returns>
+        public static int ArticulosPorMarca(string cadenaC, string marca)
+        {
+            SqlConnection connection = UsoBD.ConectaBD(cadenaC);
+            if (connection == null)
+            {
+                errores = UsoBD.ESalida;
+                return -1;
+            }
+            string proc = "ArticulosPorMarca";
+            SqlCommand command = new SqlCommand(proc, connection);
+            command.Parameters.AddWithValue("@idMarca", marca);
+            command.CommandType = CommandType.StoredProcedure;
+            int c = 0;
+            try
+            {
+                c = (int)command.ExecuteScalar();
+            }catch(SqlException e)
+            {
+                errores = e;
+                connection.Close();
+                return -2;
+            }
+            connection.Close();
+            return c;
+        }
+
+        /// <summary>
+        /// Método para cambiar la existencia de la BD a un artículo.
+        /// </summary>
+        /// <param name="cadenaC">Cadena de conexión.</param>
+        /// <param name="clave">Clave del artículo.</param>
+        /// <param name="nExistencia">Nueva existencia.</param>
+        /// <returns>0 = actualización exitosa. 1 = error de conexión. 2 = error en consulta.</returns>
         public static int ActualizaExistencia(string cadenaC, string clave, int nExistencia)
         {
             SqlConnection connection = UsoBD.ConectaBD(cadenaC);

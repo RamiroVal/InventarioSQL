@@ -130,6 +130,16 @@ namespace Inventario.Negocio
             }
         }
 
+        public string ArticulosPorMarca(string claveMarca)
+        {
+            int cArticulos = AdministraArticulos.ArticulosPorMarca(cadenaC, claveMarca);
+            if (cArticulos == -1 || cArticulos == -2)
+            {
+                return "Error con la base de datos, intentelo más tarde.";
+            }
+            return cArticulos.ToString();
+        }
+
         /// <summary>
         /// Método que devuelve la clave de un artículo por su descripción.
         /// </summary>
