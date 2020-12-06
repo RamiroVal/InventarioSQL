@@ -29,6 +29,7 @@ namespace Inventario.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblArticulo = new System.Windows.Forms.Label();
             this.lblExistencia = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
@@ -38,8 +39,12 @@ namespace Inventario.Presentacion
             this.txtClave = new System.Windows.Forms.TextBox();
             this.txtMarca = new System.Windows.Forms.TextBox();
             this.txtNuevaExistencia = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbArticulos = new System.Windows.Forms.ComboBox();
             this.btnActualizar = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtSExistencia = new System.Windows.Forms.TextBox();
+            this.lblSExistencia = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblArticulo
@@ -81,11 +86,11 @@ namespace Inventario.Presentacion
             // lblNuevaExistencia
             // 
             this.lblNuevaExistencia.AutoSize = true;
-            this.lblNuevaExistencia.Location = new System.Drawing.Point(26, 171);
+            this.lblNuevaExistencia.Location = new System.Drawing.Point(26, 203);
             this.lblNuevaExistencia.Name = "lblNuevaExistencia";
-            this.lblNuevaExistencia.Size = new System.Drawing.Size(125, 13);
+            this.lblNuevaExistencia.Size = new System.Drawing.Size(89, 13);
             this.lblNuevaExistencia.TabIndex = 4;
-            this.lblNuevaExistencia.Text = "Ingrese nueva existencia";
+            this.lblNuevaExistencia.Text = "Nueva existencia";
             // 
             // txtExistencia
             // 
@@ -94,6 +99,7 @@ namespace Inventario.Presentacion
             this.txtExistencia.ReadOnly = true;
             this.txtExistencia.Size = new System.Drawing.Size(155, 20);
             this.txtExistencia.TabIndex = 5;
+            this.txtExistencia.TabStop = false;
             // 
             // txtClave
             // 
@@ -102,6 +108,7 @@ namespace Inventario.Presentacion
             this.txtClave.ReadOnly = true;
             this.txtClave.Size = new System.Drawing.Size(155, 20);
             this.txtClave.TabIndex = 6;
+            this.txtClave.TabStop = false;
             // 
             // txtMarca
             // 
@@ -110,40 +117,72 @@ namespace Inventario.Presentacion
             this.txtMarca.ReadOnly = true;
             this.txtMarca.Size = new System.Drawing.Size(155, 20);
             this.txtMarca.TabIndex = 7;
+            this.txtMarca.TabStop = false;
             // 
             // txtNuevaExistencia
             // 
-            this.txtNuevaExistencia.Location = new System.Drawing.Point(184, 168);
+            this.txtNuevaExistencia.Location = new System.Drawing.Point(184, 200);
             this.txtNuevaExistencia.Name = "txtNuevaExistencia";
             this.txtNuevaExistencia.Size = new System.Drawing.Size(155, 20);
-            this.txtNuevaExistencia.TabIndex = 8;
+            this.txtNuevaExistencia.TabIndex = 1;
+            this.txtNuevaExistencia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNuevaExistencia_KeyPress);
+            this.txtNuevaExistencia.Validated += new System.EventHandler(this.txtNuevaExistencia_Validated);
             // 
-            // comboBox1
+            // cmbArticulos
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(184, 15);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(155, 21);
-            this.comboBox1.TabIndex = 9;
+            this.cmbArticulos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbArticulos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbArticulos.FormattingEnabled = true;
+            this.cmbArticulos.Location = new System.Drawing.Point(184, 15);
+            this.cmbArticulos.Name = "cmbArticulos";
+            this.cmbArticulos.Size = new System.Drawing.Size(155, 21);
+            this.cmbArticulos.TabIndex = 0;
+            this.cmbArticulos.SelectedIndexChanged += new System.EventHandler(this.cmbArticulos_SelectedIndexChanged);
+            this.cmbArticulos.TextUpdate += new System.EventHandler(this.cmbArticulos_TextUpdate);
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(29, 212);
+            this.btnActualizar.Location = new System.Drawing.Point(28, 249);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(310, 50);
-            this.btnActualizar.TabIndex = 10;
+            this.btnActualizar.Size = new System.Drawing.Size(309, 50);
+            this.btnActualizar.TabIndex = 2;
             this.btnActualizar.Text = "Actualizar";
             this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // txtSExistencia
+            // 
+            this.txtSExistencia.Location = new System.Drawing.Point(184, 164);
+            this.txtSExistencia.Name = "txtSExistencia";
+            this.txtSExistencia.ReadOnly = true;
+            this.txtSExistencia.Size = new System.Drawing.Size(155, 20);
+            this.txtSExistencia.TabIndex = 8;
+            this.txtSExistencia.TabStop = false;
+            // 
+            // lblSExistencia
+            // 
+            this.lblSExistencia.AutoSize = true;
+            this.lblSExistencia.Location = new System.Drawing.Point(26, 167);
+            this.lblSExistencia.Name = "lblSExistencia";
+            this.lblSExistencia.Size = new System.Drawing.Size(110, 13);
+            this.lblSExistencia.TabIndex = 9;
+            this.lblSExistencia.Text = "Siempre en existencia";
             // 
             // FormCambiarExistencia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(373, 278);
+            this.ClientSize = new System.Drawing.Size(373, 315);
+            this.Controls.Add(this.txtSExistencia);
+            this.Controls.Add(this.lblSExistencia);
             this.Controls.Add(this.btnActualizar);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbArticulos);
             this.Controls.Add(this.txtNuevaExistencia);
             this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.txtClave);
@@ -154,11 +193,13 @@ namespace Inventario.Presentacion
             this.Controls.Add(this.lblExistencia);
             this.Controls.Add(this.lblArticulo);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(389, 317);
-            this.MinimumSize = new System.Drawing.Size(389, 317);
+            this.MaximumSize = new System.Drawing.Size(389, 354);
+            this.MinimumSize = new System.Drawing.Size(389, 354);
             this.Name = "FormCambiarExistencia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cambiar Existencia";
+            this.Load += new System.EventHandler(this.FormCambiarExistencia_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,7 +216,10 @@ namespace Inventario.Presentacion
         private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.TextBox txtMarca;
         private System.Windows.Forms.TextBox txtNuevaExistencia;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbArticulos;
         private System.Windows.Forms.Button btnActualizar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.TextBox txtSExistencia;
+        private System.Windows.Forms.Label lblSExistencia;
     }
 }

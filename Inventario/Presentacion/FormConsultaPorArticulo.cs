@@ -29,16 +29,26 @@ namespace Inventario.Presentacion
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string desc = cmbArticulos.SelectedItem.ToString();
-            string clave = art.ClaveArticulo(desc);
-            string[] datos = art.Articulo(clave);
+            try
+            {
+                string desc = cmbArticulos.SelectedItem.ToString();
+                string clave = art.ClaveArticulo(desc);
+                string[] datos = art.Articulo(clave);
 
-            txtClave.Text = datos[0];
-            txtMarca.Text = datos[1];
-            txtNombre.Text = datos[2];
-            txtExistencia.Text = datos[3];
-            txtEstatus.Text = datos[4];
-            txtPrecio.Text = datos[5];
+                txtClave.Text = datos[0];
+                txtMarca.Text = datos[1];
+                txtNombre.Text = datos[2];
+                txtExistencia.Text = datos[3];
+                txtEstatus.Text = datos[4];
+                txtPrecio.Text = datos[5];
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Seleccione artículo válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider1.SetError(cmbArticulos, "Seleccione artículo válido");
+            }
         }
+
+        private void cmbArticulos_TextUpdate(object sender, EventArgs e) => errorProvider1.SetError(cmbArticulos, "");
     }
 }

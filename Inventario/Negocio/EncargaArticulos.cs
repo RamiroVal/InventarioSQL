@@ -70,7 +70,7 @@ namespace Inventario.Negocio
                 datos[i, 1] = articulos[i].Marca;
                 datos[i, 2] = articulos[i].Descripcion;
                 datos[i, 3] = articulos[i].Existencia.ToString();
-                datos[i, 4] = (articulos[i].SiempreExistencia == 1) ? "Verdadero" : "Falso";
+                datos[i, 4] = (articulos[i].SiempreExistencia == 1) ? "VERDADERO" : "FALSO";
                 datos[i, 5] = articulos[i].Precio.ToString("C2");
             }
             return datos;
@@ -93,6 +93,11 @@ namespace Inventario.Negocio
             return desc;
         }
 
+        /// <summary>
+        /// Método que devuelve un arreglo de string con todos los atributos de un artículo.
+        /// </summary>
+        /// <param name="clave">Clave del artículo.</param>
+        /// <returns>Arreglo de string con los datos.</returns>
         public string[] Articulo(string clave)
         {
             Articulo ar = AdministraArticulos.DatosArticulo(cadenaC, clave);
@@ -101,9 +106,28 @@ namespace Inventario.Negocio
             articulo[1] = ar.Marca;
             articulo[2] = ar.Descripcion;
             articulo[3] = ar.Existencia.ToString();
-            articulo[4] = (ar.SiempreExistencia == 1) ? "Verdadero" : "Falso";
+            articulo[4] = (ar.SiempreExistencia == 1) ? "VERDADERO" : "FALSO";
             articulo[5] = ar.Precio.ToString("C2");
             return articulo;
+        }
+
+        /// <summary>
+        /// Método para cambiar la existencia de un artículo.
+        /// </summary>
+        /// <param name="clave">Clave del artículo.</param>
+        /// <param name="nExistencia">Existencia del artículo.</param>
+        /// <returns>True = actualización exitosa.</returns>
+        public bool CambiarExistencia(string clave, int nExistencia)
+        {
+            int c = AdministraArticulos.ActualizaExistencia(cadenaC, clave, nExistencia);
+            if (c == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         /// <summary>

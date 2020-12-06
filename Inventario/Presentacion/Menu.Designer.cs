@@ -73,26 +73,26 @@ namespace Inventario.Presentacion
             // artículosToolStripMenuItem
             // 
             this.artículosToolStripMenuItem.Name = "artículosToolStripMenuItem";
-            this.artículosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.artículosToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.artículosToolStripMenuItem.Text = "Artículos";
             this.artículosToolStripMenuItem.Click += new System.EventHandler(this.artículosToolStripMenuItem_Click);
             // 
             // marcasToolStripMenuItem
             // 
             this.marcasToolStripMenuItem.Name = "marcasToolStripMenuItem";
-            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.marcasToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.marcasToolStripMenuItem.Text = "Marcas";
             this.marcasToolStripMenuItem.Click += new System.EventHandler(this.marcasToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(147, 6);
             // 
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(150, 26);
             this.salirToolStripMenuItem.Text = "Salir";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -141,6 +141,7 @@ namespace Inventario.Presentacion
             this.cambiarExistenciaToolStripMenuItem.Name = "cambiarExistenciaToolStripMenuItem";
             this.cambiarExistenciaToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.cambiarExistenciaToolStripMenuItem.Text = "Cambiar Existencia";
+            this.cambiarExistenciaToolStripMenuItem.Click += new System.EventHandler(this.cambiarExistenciaToolStripMenuItem_Click);
             // 
             // eliminarMarcaToolStripMenuItem
             // 

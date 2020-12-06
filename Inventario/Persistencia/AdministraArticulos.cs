@@ -241,6 +241,32 @@ namespace Inventario.Persistencia
             return articulo;
         }
 
+        public static int ActualizaExistencia(string cadenaC, string clave, int nExistencia)
+        {
+            SqlConnection connection = UsoBD.ConectaBD(cadenaC);
+            if (connection == null)
+            {
+                errores = UsoBD.ESalida;
+                return 1;
+            }
+            string proc = "ActualizaExistencia";
+            SqlCommand command = new SqlCommand(proc, connection);
+            command.Parameters.AddWithValue("@idArticulo", clave);
+            command.Parameters.AddWithValue("@nExistencia", nExistencia);
+            command.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                command.ExecuteNonQuery();
+            }catch(SqlException e)
+            {
+                errores = e;
+                connection.Close();
+                return 2;
+            }
+            connection.Close();
+            return 0;
+        }
+
         public SqlException Errores => errores;
     }
 }

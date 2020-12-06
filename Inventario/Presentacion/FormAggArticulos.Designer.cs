@@ -63,9 +63,9 @@ namespace Inventario.Presentacion
             this.lblNombre.Location = new System.Drawing.Point(51, 114);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(82, 17);
+            this.lblNombre.Size = new System.Drawing.Size(58, 17);
             this.lblNombre.TabIndex = 1;
-            this.lblNombre.Text = "Descripción";
+            this.lblNombre.Text = "Nombre";
             // 
             // lblExistencia
             // 
@@ -167,13 +167,15 @@ namespace Inventario.Presentacion
             // 
             // cmbMarcas
             // 
-            this.cmbMarcas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbMarcas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbMarcas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbMarcas.FormattingEnabled = true;
             this.cmbMarcas.Location = new System.Drawing.Point(233, 67);
             this.cmbMarcas.Margin = new System.Windows.Forms.Padding(4);
             this.cmbMarcas.Name = "cmbMarcas";
             this.cmbMarcas.Size = new System.Drawing.Size(203, 24);
             this.cmbMarcas.TabIndex = 1;
+            this.cmbMarcas.TextUpdate += new System.EventHandler(this.cmbMarcas_TextUpdate);
             // 
             // errorProvider1
             // 

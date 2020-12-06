@@ -34,5 +34,20 @@ namespace Inventario.Presentacion
                 dataGridView1.Rows.Add(articulos[i, 0], articulos[i, 1], articulos[i, 2], articulos[i, 3], articulos[i, 4], articulos[i, 5]);
             }
         }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if(dataGridView1.Columns[e.ColumnIndex].Name == "existencia")
+            {
+                if (Convert.ToInt32(e.Value) <= 3)
+                {
+                    e.CellStyle.BackColor = Color.Orange;
+                    if(Convert.ToInt32(e.Value) <= 1)
+                    {
+                        e.CellStyle.ForeColor = Color.Red;
+                    }
+                }
+            }
+        }
     }
 }

@@ -84,7 +84,7 @@ namespace Inventario.Presentacion
         {
             string precio = txtPrecio.Text;
             bool valido = Double.TryParse(precio, out double s);
-            if(Regex.IsMatch(precio, "^[0-9]{1,6}(.[0-9]{1,2})?$"))
+            if(Regex.IsMatch(precio, "^[0-9]{1,6}(\\.[0-9]{1,2})?$"))
             {
                 errorProvider1.SetError(txtPrecio, "");
             }
@@ -190,34 +190,43 @@ namespace Inventario.Presentacion
         private void Guardar()
         {
             EncargaArticulos guardar = new EncargaArticulos();
-            string clave = txtClave.Text;
-            string nMarca = cmbMarcas.SelectedItem.ToString();
-            string marca = m.ClaveMarca(nMarca);
-            string nombre = txtNombre.Text;
-            double precio = Convert.ToDouble(txtPrecio.Text);
-            string sExistencia = (chkExistencia.Checked) ? "Verdadero" : "Falso";
-            int sExis = (chkExistencia.Checked) ? 1 : 0;
-            int existencia = Convert.ToInt32(txtExistencia.Text);
-            DialogResult result = MessageBox.Show("Se agregará el´Artículo:" +
-                $"\nClave: {clave}" +
-                $"\nDescripción: {nombre}" +
-                $"\nMarca: {nMarca}" +
-                $"\nPrecio: ${precio.ToString("C2")}" +
-                $"\nSiempre en existencia: {sExistencia}" +
-                $"\nExistencia: {existencia}", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (result == DialogResult.Yes)
+            try
             {
-                if (guardar.AltaArticulo(clave, marca, nombre, existencia, sExis, precio))
+
+                string clave = txtClave.Text;
+                string nMarca = cmbMarcas.SelectedItem.ToString();
+                string marca = m.ClaveMarca(nMarca);
+                string nombre = txtNombre.Text;
+                double precio = Convert.ToDouble(txtPrecio.Text);
+                string sExistencia = (chkExistencia.Checked) ? "Verdadero" : "Falso";
+                int sExis = (chkExistencia.Checked) ? 1 : 0;
+                int existencia = Convert.ToInt32(txtExistencia.Text);
+                DialogResult result = MessageBox.Show("Se agregará el´Artículo:" +
+                    $"\nClave: {clave}" +
+                    $"\nDescripción: {nombre}" +
+                    $"\nMarca: {nMarca}" +
+                    $"\nPrecio: ${precio.ToString("C2")}" +
+                    $"\nSiempre en existencia: {sExistencia}" +
+                    $"\nExistencia: {existencia}", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (result == DialogResult.Yes)
                 {
-                    MessageBox.Show($"El artículo {nombre}, ha sido agregado con éxito");
-                    Limpiar();
+                    if (guardar.AltaArticulo(clave, marca, nombre, existencia, sExis, precio))
+                    {
+                        MessageBox.Show($"El artículo {nombre}, ha sido agregado con éxito");
+                        Limpiar();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Artículo repetido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        errorProvider1.SetError(txtClave, "Ingrese clave");
+                        errorProvider1.SetError(txtNombre, "Ingrese nombre");
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Artículo repetido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    errorProvider1.SetError(txtClave, "Ingrese clave");
-                    errorProvider1.SetError(txtNombre, "Ingrese nombre");
-                }
+            }
+            catch (NullReferenceException)
+            {
+                MessageBox.Show("Ingrese marca válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorProvider1.SetError(cmbMarcas, "Seleccione marca válida");
             }
         }
 
@@ -246,6 +255,11 @@ namespace Inventario.Presentacion
                     errorProvider1.SetError(txtExistencia, "");
                 }
             }
+        }
+
+        private void cmbMarcas_TextUpdate(object sender, EventArgs e)
+        {
+            errorProvider1.SetError(cmbMarcas, "");
         }
     }
 }

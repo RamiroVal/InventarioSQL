@@ -93,5 +93,20 @@ namespace Inventario.Presentacion
                 MessageBox.Show("No se han añadido artículos.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void cambiarExistenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EncargaArticulos a = new EncargaArticulos();
+            bool hay = a.HayArticulos();
+            if (hay)
+            {
+                FormCambiarExistencia i = new FormCambiarExistencia();
+                i.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("No se han añadido artículos.", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

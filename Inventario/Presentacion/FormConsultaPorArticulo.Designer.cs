@@ -29,6 +29,7 @@ namespace Inventario.Presentacion
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblClave = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.lblExistencia = new System.Windows.Forms.Label();
@@ -44,6 +45,8 @@ namespace Inventario.Presentacion
             this.cmbArticulos = new System.Windows.Forms.ComboBox();
             this.lblArticulo = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblClave
@@ -168,13 +171,15 @@ namespace Inventario.Presentacion
             // 
             // cmbArticulos
             // 
-            this.cmbArticulos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbArticulos.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbArticulos.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbArticulos.FormattingEnabled = true;
             this.cmbArticulos.Location = new System.Drawing.Point(216, 18);
             this.cmbArticulos.Margin = new System.Windows.Forms.Padding(4);
             this.cmbArticulos.Name = "cmbArticulos";
             this.cmbArticulos.Size = new System.Drawing.Size(268, 24);
             this.cmbArticulos.TabIndex = 0;
+            this.cmbArticulos.TextUpdate += new System.EventHandler(this.cmbArticulos_TextUpdate);
             // 
             // lblArticulo
             // 
@@ -195,6 +200,11 @@ namespace Inventario.Presentacion
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.errorProvider1.ContainerControl = this;
             // 
             // FormConsultaPorArticulo
             // 
@@ -225,6 +235,7 @@ namespace Inventario.Presentacion
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta por Artículo";
             this.Load += new System.EventHandler(this.FormConsultaPorArticulo_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,5 +258,6 @@ namespace Inventario.Presentacion
         private System.Windows.Forms.ComboBox cmbArticulos;
         private System.Windows.Forms.Label lblArticulo;
         private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }
